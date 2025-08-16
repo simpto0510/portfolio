@@ -1,4 +1,12 @@
 
+:root{
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans';
+  --font-display: 'Space Grotesk', var(--font-body);
+}
+html{scroll-behavior:smooth}
+body{font-family: var(--font-body); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
