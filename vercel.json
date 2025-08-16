@@ -1,0 +1,8 @@
+{
+  // Override the output directory used by Vercel’s zero‑config build.
+  // Next.js produces a `.next` folder on build, so we explicitly tell Vercel to
+  // treat `.next` as the deployment output. This prevents errors such as
+  // "No Output Directory named \"build\"" when the project previously used
+  // Create React App.
+  "outputDirectory": ".next"
+}
