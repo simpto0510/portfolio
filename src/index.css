@@ -13,3 +13,15 @@ html { scroll-behavior: smooth; }
 .animate-float-slow { animation: float-slow 16s ease-in-out infinite; }
 .animate-float-slower { animation: float-slower 22s ease-in-out infinite; }
 .animate-move-lines { animation: move-lines 14s linear infinite; }
+
+
+/* Color & motion utilities */
+@keyframes hueRotate { 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(15deg)} } /* gentle cycling */
+.animate-hue-slow { animation: hueRotate 12s ease-in-out infinite alternate; }
+
+@keyframes float-slow { 0%{transform:translate(0,0)} 50%{transform:translate(24px,12px)} 100%{transform:translate(0,0)} }
+@keyframes float-slower { 0%{transform:translate(0,0)} 50%{transform:translate(-20px,-10px)} 100%{transform:translate(0,0)} }
+@keyframes move-lines { 0%{background-position:0 0} 100%{background-position:220px 220px} }
+.animate-float-slow { animation: float-slow 16s ease-in-out infinite; }
+.animate-float-slower { animation: float-slower 22s ease-in-out infinite; }
+.animate-move-lines { animation: move-lines 14s linear infinite; }

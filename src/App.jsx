@@ -56,7 +56,14 @@ const Section = ({ id, title, children }) => (
   <section id={id} className="scroll-mt-24 py-12 md:py-16">
     <div className="max-w-5xl mx-auto px-4">
       <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 font-[Poppins]">{title}</h2>
-      {children}
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+      >
+        {children}
+      </motion.div>
     </div>
   </section>
 );
@@ -68,14 +75,18 @@ const Chip = ({ children }) => (
 );
 
 const Card = ({ title, children, footer, link }) => (
-  <div className="rounded-2xl border p-5 md:p-6 shadow-sm hover:shadow-lg transition-all bg-white/50 dark:bg-zinc-900/50">
+  <motion.div
+    className="rounded-2xl border p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all bg-white/50 dark:bg-zinc-900/50 hover:border-white/70"
+    whileHover={{ y: -4, rotateX: 1 }}
+    transition={{ type: "spring", stiffness: 200, damping: 15 }}
+  >
     <div className="flex items-start justify-between gap-4">
       <h3 className="text-xl md:text-2xl font-semibold font-[Poppins]">{title}</h3>
       {link && (<a href={link} className="text-sm underline hover:no-underline" target="_blank" rel="noreferrer">View</a>)}
     </div>
     <div className="mt-3 text-base text-zinc-700 dark:text-zinc-300 font-[Poppins]">{children}</div>
     {footer && <div className="mt-4">{footer}</div>}
-  </div>
+  </motion.div>
 );
 
 const Nav = () => (
@@ -101,12 +112,12 @@ const Hero = () => (
     <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-indigo-500/20" />
     <div className="relative max-w-5xl mx-auto px-4 pt-20 pb-16">
       <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{duration:0.6}}>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Poppins]">{DATA.name}</h1>
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Poppins] bg-gradient-to-r from-white via-fuchsia-200 to-cyan-200 bg-clip-text text-transparent">{DATA.name}</h1>
         <p className="mt-2 text-xl md:text-2xl font-semibold text-blue-100">{DATA.title}</p>
         <p className="text-blue-200">{DATA.subtitle}</p>
         <div className="mt-6 flex flex-wrap items-center gap-4 text-sm md:text-base">
-          <a href={`mailto:${DATA.email}`} className="rounded-xl border px-4 py-2 hover:shadow-lg transition">Email me</a>
-          <a href={DATA.links.resume} download className="rounded-xl border px-4 py-2 hover:shadow-lg transition">Download CV</a>
+          <a href={`mailto:${DATA.email}`} className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]">Email me</a>
+          <a href={DATA.links.resume} download className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]">Download CV</a>
           <span className="text-blue-200">{DATA.location}</span>
         </div>
       </motion.div>
@@ -177,9 +188,9 @@ const Contact = () => (
     <Card title="Get in touch">
       <p className="text-lg text-zinc-200">Open to internships and full-time roles in AI/ML, MLOps, and VLSI. The fastest way to reach me is via email.</p>
       <div className="mt-6 flex flex-wrap gap-4">
-        <a href={`mailto:${DATA.email}`} className="rounded-xl border px-4 py-2 hover:shadow-lg transition">Email</a>
-        <a href={DATA.links.linkedin} target="_blank" rel="noreferrer" className="rounded-xl border px-4 py-2 hover:shadow-lg transition">LinkedIn</a>
-        <a href={DATA.links.github} target="_blank" rel="noreferrer" className="rounded-xl border px-4 py-2 hover:shadow-lg transition">GitHub</a>
+        <a href={`mailto:${DATA.email}`} className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]">Email</a>
+        <a href={DATA.links.linkedin} target="_blank" rel="noreferrer" className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]">LinkedIn</a>
+        <a href={DATA.links.github} target="_blank" rel="noreferrer" className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]">GitHub</a>
       </div>
     </Card>
   </Section>
@@ -188,21 +199,27 @@ const Contact = () => (
 
 
 
+
 const Background = () => (
   <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    {/* Base gradient wash across whole page */}
-    <div className="absolute inset-0 bg-gradient-to-br from-[#6d3cf5] via-[#4c58f7] to-[#2a73ff]" />
+    {/* Base animated gradient wash */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#6d3cf5] via-[#4c58f7] to-[#2a73ff] animate-hue-slow" />
     {/* Vivid drifting blobs */}
     <div className="absolute -top-40 -left-32 h-[34rem] w-[34rem] rounded-full blur-3xl opacity-45 animate-float-slow"
          style={{background:"radial-gradient(closest-side, rgba(167,139,250,0.9), transparent)"}} />
     <div className="absolute -bottom-48 -right-24 h-[36rem] w-[36rem] rounded-full blur-3xl opacity-45 animate-float-slower"
          style={{background:"radial-gradient(closest-side, rgba(56,189,248,0.9), transparent)"}} />
+    {/* Extra color pops */}
+    <div className="absolute top-1/3 -right-32 h-[22rem] w-[22rem] rounded-full blur-3xl opacity-35 animate-float-slower"
+         style={{background:"radial-gradient(closest-side, rgba(244,114,182,0.9), transparent)"}} />{/* pink */}
+    <div className="absolute bottom-1/3 -left-32 h-[20rem] w-[20rem] rounded-full blur-3xl opacity-35 animate-float-slow"
+         style={{background:"radial-gradient(closest-side, rgba(34,197,94,0.9), transparent)"}} />{/* green */}
     {/* Subtle animated tech lines */}
     <div className="absolute inset-0 opacity-[0.07] animate-move-lines"
          style={{backgroundImage:"repeating-linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 2px, transparent 2px, transparent 12px)"}} />
     {/* Gold ribbon accent */}
     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400 rotate-[-2deg] origin-top-left" />
-  </div>
+  </motion.div>
 );
 
 
