@@ -1,8 +1,19 @@
 {
+  // Explicitly specify that this is a Next.js project. Without this, Vercel
+  // may auto‑detect the wrong framework (e.g. Create React App) based on
+  // leftover files from a previous template. Valid values include "nextjs",
+  // "vite", "cra", etc.
+  "framework": "nextjs",
+
+  // Define the build command to run. By default Vercel will use `next build`
+  // if it detects a Next.js project, but we specify it here to avoid
+  // ambiguity.
+  "buildCommand": "npm run build",
+
   // Override the output directory used by Vercel’s zero‑config build.
-  // Next.js produces a `.next` folder on build, so we explicitly tell Vercel to
-  // treat `.next` as the deployment output. This prevents errors such as
+  // Next.js produces a `.next` folder on build, so we explicitly tell Vercel
+  // to treat `.next` as the deployment output. This prevents errors such as
   // "No Output Directory named \"build\"" when the project previously used
-  // Create React App.
+  // Create React App.
   "outputDirectory": ".next"
 }
