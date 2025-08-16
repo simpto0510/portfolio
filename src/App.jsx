@@ -187,19 +187,20 @@ const Contact = () => (
 
 
 
+
 const Background = () => (
   <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    {/* gradient wash */}
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-indigo-700 to-blue-700" />
-    {/* drifting blobs */}
-    <div className="absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full blur-3xl opacity-40 animate-float-slow"
-         style={{background:"radial-gradient(closest-side, rgba(167,139,250,.9), transparent)"}} />
-    <div className="absolute -bottom-40 -right-24 h-[32rem] w-[32rem] rounded-full blur-3xl opacity-40 animate-float-slower"
-         style={{background:"radial-gradient(closest-side, rgba(56,189,248,.9), transparent)"}} />
-    {/* subtle tech lines */}
-    <div className="absolute inset-0 opacity-[0.06] animate-move-lines"
-         style={{backgroundImage:"repeating-linear-gradient(135deg, #ffffff, #ffffff 2px, transparent 2px, transparent 12px)"}} />
-    {/* thin gold ribbon accent */}
+    {/* Base gradient wash across whole page */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#6d3cf5] via-[#4c58f7] to-[#2a73ff]" />
+    {/* Vivid drifting blobs */}
+    <div className="absolute -top-40 -left-32 h-[34rem] w-[34rem] rounded-full blur-3xl opacity-45 animate-float-slow"
+         style={{background:"radial-gradient(closest-side, rgba(167,139,250,0.9), transparent)"}} />
+    <div className="absolute -bottom-48 -right-24 h-[36rem] w-[36rem] rounded-full blur-3xl opacity-45 animate-float-slower"
+         style={{background:"radial-gradient(closest-side, rgba(56,189,248,0.9), transparent)"}} />
+    {/* Subtle animated tech lines */}
+    <div className="absolute inset-0 opacity-[0.07] animate-move-lines"
+         style={{backgroundImage:"repeating-linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 2px, transparent 2px, transparent 12px)"}} />
+    {/* Gold ribbon accent */}
     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400 rotate-[-2deg] origin-top-left" />
   </div>
 );
@@ -208,7 +209,7 @@ const Background = () => (
 
 export default function App() {
   return (
-    <div className="min-h-screen text-white bg-black font-[Poppins]">
+    <div className="min-h-screen text-white font-[Poppins]">
       <style>{`html{scroll-behavior:smooth}`}</style>
       <Background />
       <Nav />
