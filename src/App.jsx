@@ -9,7 +9,7 @@ const DATA = {
   name: "M R Khan",
   title: "Electronics & Telecommunication Engineer",
   subtitle: "Machine Learning | MLOps | VLSI / Physical Design",
-  location: "Chattogram, Bangladesh",
+  location: "Dhaka, Bangladesh",
   email: "shikta0510@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/m-r-khan-a78a6b299/",
@@ -185,12 +185,26 @@ const Contact = () => (
   </Section>
 );
 
+
+
 const Background = () => (
   <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-800 via-indigo-800 to-blue-800 animate-[gradient_10s_ease_infinite]" />
+    {/* gradient wash */}
+    <div className="absolute inset-0 bg-gradient-to-br from-purple-700 via-indigo-700 to-blue-700" />
+    {/* drifting blobs */}
+    <div className="absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full blur-3xl opacity-40 animate-float-slow"
+         style={{background:"radial-gradient(closest-side, rgba(167,139,250,.9), transparent)"}} />
+    <div className="absolute -bottom-40 -right-24 h-[32rem] w-[32rem] rounded-full blur-3xl opacity-40 animate-float-slower"
+         style={{background:"radial-gradient(closest-side, rgba(56,189,248,.9), transparent)"}} />
+    {/* subtle tech lines */}
+    <div className="absolute inset-0 opacity-[0.06] animate-move-lines"
+         style={{backgroundImage:"repeating-linear-gradient(135deg, #ffffff, #ffffff 2px, transparent 2px, transparent 12px)"}} />
+    {/* thin gold ribbon accent */}
     <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400 rotate-[-2deg] origin-top-left" />
   </div>
 );
+
+
 
 export default function App() {
   return (
