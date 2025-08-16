@@ -1,6 +1,5 @@
 "use client"
 import { motion } from "framer-motion"
-import React from "react"
 
 const DATA = {
   name: "M R Khan",
@@ -109,21 +108,12 @@ const DATA = {
 const Section = ({ id, title, children }) => (
   <section id={id} className="scroll-mt-24 py-12 md:py-16">
     <div className="max-w-5xl mx-auto px-4">
-      <motion.h2
-        className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 font-display"
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {title}
-      </motion.h2>
+      <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 font-display">{title}</h2>
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: "-80px" }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        exit={{ opacity: 0, y: -20 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
       >
         {children}
       </motion.div>
@@ -137,17 +127,14 @@ const Chip = ({ children }) => (
 
 const Card = ({ title, children, footer }) => (
   <motion.div
-    className="rounded-2xl p-5 md:p-6 shadow-2xl hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-500 backdrop-blur-2xl bg-transparent border border-white/10 hover:bg-white/5 hover:border-white/20 hover:backdrop-blur-3xl"
-    whileHover={{ y: -8, scale: 1.02 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    initial={{ opacity: 0, y: 20 }}
-    viewport={{ once: false, margin: "-50px" }}
-    transition={{ type: "spring", stiffness: 200, damping: 20 }}
+    className="rounded-2xl border p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all bg-white/50 dark:bg-zinc-900/50 hover:border-white/70"
+    whileHover={{ y: -4, rotateX: 1 }}
+    transition={{ type: "spring", stiffness: 200, damping: 15 }}
   >
     <div className="flex items-start justify-between gap-4">
-      <h3 className="text-xl md:text-2xl font-semibold font-display text-white drop-shadow-sm">{title}</h3>
+      <h3 className="text-xl md:text-2xl font-semibold font-display">{title}</h3>
     </div>
-    <div className="mt-3 text-base text-white/90 font-body">{children}</div>
+    <div className="mt-3 text-base text-zinc-700 dark:text-zinc-200 font-body">{children}</div>
     {footer && <div className="mt-4">{footer}</div>}
   </motion.div>
 )
@@ -190,7 +177,7 @@ const Hero = () => (
   <header className="relative overflow-hidden" id="top">
     <div className="relative max-w-5xl mx-auto px-4 pt-20 pb-16">
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-display bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-display bg-gradient-to-r from-white via-fuchsia-200 to-cyan-200 bg-clip-text text-transparent">
           {DATA.name}
         </h1>
         <p className="mt-2 text-xl md:text-2xl font-semibold text-blue-100">{DATA.title}</p>
@@ -198,14 +185,14 @@ const Hero = () => (
         <div className="mt-6 flex flex-wrap items-center gap-4 text-sm md:text-base">
           <a
             href={`mailto:${DATA.email}`}
-            className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(59,130,246,0)] hover:shadow-[0_0_25px_2px_rgba(59,130,246,.25)]"
+            className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]"
           >
             Email me
           </a>
           <a
             href={DATA.links.resume}
             download
-            className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(59,130,246,0)] hover:shadow-[0_0_25px_2px_rgba(59,130,246,.25)]"
+            className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]"
           >
             Download CV
           </a>
@@ -299,13 +286,13 @@ const Skills = () => (
 const Contact = () => (
   <Section id="contact" title="Contact">
     <Card title="Get in touch">
-      <p className="text-lg text-white/90">
+      <p className="text-lg text-zinc-800 dark:text-zinc-200">
         Open to internships and full-time roles in AI/ML, MLOps, and VLSI. The fastest way to reach me is via email.
       </p>
       <div className="mt-6 flex flex-wrap gap-4">
         <a
           href={`mailto:${DATA.email}`}
-          className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(59,130,246,0)] hover:shadow-[0_0_25px_2px_rgba(59,130,246,.25)]"
+          className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]"
         >
           Email
         </a>
@@ -313,7 +300,7 @@ const Contact = () => (
           href={DATA.links.linkedin}
           target="_blank"
           rel="noreferrer"
-          className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(59,130,246,0)] hover:shadow-[0_0_25px_2px_rgba(59,130,246,.25)]"
+          className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]"
         >
           LinkedIn
         </a>
@@ -321,7 +308,7 @@ const Contact = () => (
           href={DATA.links.github}
           target="_blank"
           rel="noreferrer"
-          className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(59,130,246,0)] hover:shadow-[0_0_25px_2px_rgba(59,130,246,.25)]"
+          className="rounded-xl border px-4 py-2 hover:shadow-xl transition shadow-[0_0_0_0_rgba(255,255,255,0)] hover:shadow-[0_0_25px_2px_rgba(255,255,255,.25)]"
         >
           GitHub
         </a>
@@ -330,85 +317,113 @@ const Contact = () => (
   </Section>
 )
 
-const Background = () => {
-  const [scrollY, setScrollY] = React.useState(0)
-
-  React.useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 animate-gradient-move" />
-
-      <div
-        className="absolute top-20 left-20 w-32 h-32 opacity-50"
-        style={{ transform: `translateY(${scrollY * 0.1}px) translateX(${scrollY * 0.05}px)` }}
-      >
-        <div className="w-full h-full bg-gradient-to-br from-blue-600/60 to-purple-600/40 rounded-full animate-orbit-slow" />
-      </div>
-
-      <div
-        className="absolute top-1/3 right-1/4 w-24 h-24 opacity-55"
-        style={{ transform: `translateY(${scrollY * -0.15}px) translateX(${scrollY * 0.08}px)` }}
-      >
-        <div
-          className="w-full h-full bg-gradient-to-tl from-pink-600/50 to-purple-600/30 animate-morph-rotate"
-          style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}
-        />
-      </div>
-
-      <div
-        className="absolute bottom-1/4 left-1/3 w-40 h-40 opacity-45"
-        style={{ transform: `translateY(${scrollY * 0.12}px) translateX(${scrollY * -0.06}px)` }}
-      >
-        <div className="w-full h-full bg-gradient-to-r from-blue-700/40 to-pink-700/30 rounded-full animate-pulse-scale" />
-      </div>
-
-      <div
-        className="absolute top-2/3 right-1/5 w-28 h-28 opacity-60"
-        style={{ transform: `translateY(${scrollY * -0.08}px) translateX(${scrollY * -0.12}px)` }}
-      >
-        <div
-          className="w-full h-full bg-gradient-to-bl from-pink-700/35 to-blue-700/25 animate-drift-rotate"
-          style={{ clipPath: "polygon(0% 0%, 100% 0%, 50% 100%, 100% 100%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)" }}
-        />
-      </div>
-
-      <div
-        className="absolute bottom-1/5 right-1/3 w-36 h-36 opacity-50"
-        style={{ transform: `translateY(${scrollY * 0.18}px) translateX(${scrollY * 0.1}px)` }}
-      >
-        <div className="w-full h-full bg-gradient-to-tr from-blue-800/30 to-purple-800/20 rounded-full animate-float-spin" />
-      </div>
-
-      <div
-        className="absolute top-1/2 left-1/2 w-20 h-20 opacity-55 -translate-x-1/2 -translate-y-1/2"
-        style={{ transform: `translate(-50%, -50%) translateY(${scrollY * -0.2}px) translateX(${scrollY * 0.15}px)` }}
-      >
-        <div
-          className="w-full h-full bg-gradient-to-r from-pink-600/40 to-blue-600/35 animate-morph-slow"
-          style={{ clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)" }}
-        />
-      </div>
-
-      <div
-        className="absolute top-1/4 left-3/4 w-16 h-16 opacity-50"
-        style={{ transform: `translateY(${scrollY * 0.25}px) translateX(${scrollY * -0.18}px)` }}
-      >
-        <div className="w-full h-full bg-gradient-to-br from-blue-700/35 to-purple-700/25 rounded-full animate-orbit-reverse" />
-      </div>
-
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-    </div>
-  )
-}
+const Background = () => (
+  <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-br from-[#6d3cf5] via-[#4c58f7] to-[#2a73ff] animate-hue-slow" />
+    <div
+      className="absolute -top-40 -left-32 h-[34rem] w-[34rem] rounded-full blur-3xl opacity-45 animate-float-slow"
+      style={{ background: "radial-gradient(closest-side, rgba(167,139,250,0.9), transparent)" }}
+    />
+    <div
+      className="absolute -bottom-48 -right-24 h-[36rem] w-[36rem] rounded-full blur-3xl opacity-45 animate-float-slower"
+      style={{ background: "radial-gradient(closest-side, rgba(56,189,248,0.9), transparent)" }}
+    />
+    <div
+      className="absolute top-1/3 -right-32 h-[22rem] w-[22rem] rounded-full blur-3xl opacity-35 animate-float-slower"
+      style={{ background: "radial-gradient(closest-side, rgba(244,114,182,0.9), transparent)" }}
+    />
+    <div
+      className="absolute bottom-1/3 -left-32 h-[20rem] w-[20rem] rounded-full blur-3xl opacity-35 animate-float-slow"
+      style={{ background: "radial-gradient(closest-side, rgba(34,197,94,0.9), transparent)" }}
+    />
+    <div
+      className="absolute top-1/4 left-1/4 h-[12rem] w-[12rem] rounded-full blur-2xl opacity-25 animate-pulse"
+      style={{ background: "radial-gradient(closest-side, rgba(255,215,0,0.8), transparent)", animationDuration: "4s" }}
+    />
+    <div
+      className="absolute bottom-1/4 right-1/4 h-[14rem] w-[14rem] rounded-full blur-2xl opacity-25 animate-pulse"
+      style={{
+        background: "radial-gradient(closest-side, rgba(147,51,234,0.8), transparent)",
+        animationDuration: "6s",
+      }}
+    />
+    <div
+      className="absolute top-1/6 left-1/6 h-4 w-4 rounded-full bg-white/30 animate-bounce"
+      style={{ animationDuration: "3s", animationDelay: "0s" }}
+    />
+    <div
+      className="absolute top-2/3 left-1/3 h-3 w-3 rounded-full bg-cyan-300/40 animate-bounce"
+      style={{ animationDuration: "4s", animationDelay: "1s" }}
+    />
+    <div
+      className="absolute top-1/2 right-1/6 h-5 w-5 rounded-full bg-purple-300/30 animate-bounce"
+      style={{ animationDuration: "5s", animationDelay: "2s" }}
+    />
+    <div
+      className="absolute bottom-1/6 left-2/3 h-2 w-2 rounded-full bg-yellow-300/50 animate-bounce"
+      style={{ animationDuration: "3.5s", animationDelay: "0.5s" }}
+    />
+    <div
+      className="absolute top-1/5 right-1/5 w-16 h-16 border border-white/20 rotate-45 animate-spin"
+      style={{ animationDuration: "20s" }}
+    />
+    <div
+      className="absolute bottom-1/5 left-1/5 w-12 h-12 border-2 border-cyan-300/30 animate-spin"
+      style={{ animationDuration: "15s", animationDirection: "reverse" }}
+    />
+    <div
+      className="absolute top-2/5 left-1/2 w-8 h-8 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rotate-12 animate-pulse"
+      style={{ animationDuration: "7s" }}
+    />
+    <div
+      className="absolute inset-0 opacity-[0.07] animate-move-lines"
+      style={{
+        backgroundImage:
+          "repeating-linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8) 2px, transparent 2px, transparent 12px)",
+      }}
+    />
+    <div
+      className="absolute inset-0 opacity-[0.05] animate-move-lines"
+      style={{
+        backgroundImage:
+          "repeating-linear-gradient(45deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6) 1px, transparent 1px, transparent 20px)",
+        animationDuration: "30s",
+        animationDirection: "reverse",
+      }}
+    />
+    <div
+      className="absolute inset-0 opacity-[0.03]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle at 25% 25%, rgba(255,255,255,0.5) 2px, transparent 2px), radial-gradient(circle at 75% 75%, rgba(255,255,255,0.5) 2px, transparent 2px)",
+        backgroundSize: "60px 60px",
+      }}
+    />
+    <div
+      className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400 rotate-[-2deg] origin-top-left animate-pulse"
+      style={{ animationDuration: "8s" }}
+    />
+    <div
+      className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-400/20 to-transparent rounded-bl-full animate-pulse"
+      style={{ animationDuration: "10s" }}
+    />
+    <div
+      className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-purple-400/20 to-transparent rounded-tr-full animate-pulse"
+      style={{ animationDuration: "12s" }}
+    />
+    <div
+      className="absolute top-0 left-0 w-full h-full opacity-10"
+      style={{
+        background: "linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)",
+        animation: "wave 8s ease-in-out infinite",
+      }}
+    />
+  </div>
+)
 
 export default function App() {
   return (
-    <div className="min-h-screen text-white font-body bg-transparent">
+    <div className="min-h-screen text-white font-body">
       <Background />
       <Nav />
       <Hero />
